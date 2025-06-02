@@ -1,56 +1,325 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Kepler Exoplanet Detection</title>
+  <meta charset="UTF-8">
+  <title>Kepler Exoplanet Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a192f;
+      color: #f8f8f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #112240;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #64ffda33;
+      max-width: 700px;
+      width: 90%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #64ffda;
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #1e2a40;
+      color: #f8f8f2;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background-color: #64ffda;
+      color: #0a192f;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #52e0c4;
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px;">
-    <h1>🪐 Kepler Exoplanet Predictor</h1>
-    <form method="POST" action="/predict">
-        <!-- Replace these with actual feature names from your dataset -->
-        <label>Feature 1:</label> <input type="text" name="DispositionScore"><br><br>
-        <label>Feature 2:</label> <input type="text" name="OrbitalPeriod_days"><br><br>
-        <label>Feature 3:</label> <input type="text" name="OrbitalPeriodUpperUnc_days"><br><br>
-        <label>Feature 4:</label> <input type="text" name="OrbitalPeriodLowerUnc_days"><br><br>
-        <label>Feature 5:</label> <input type="text" name="TransitEpoch_BKJD"><br><br>
-        <label>Feature 6:</label> <input type="text" name="TransitEpochUpperUnc_BKJD"><br><br>
-        <label>Feature 7:</label> <input type="text" name="TransitEpochLowerUnc_BKJD"><br><br>
-        <label>Feature 8:</label> <input type="text" name="ImpactParamete"><br><br>
-        <label>Feature 9:</label> <input type="text" name="ImpactParameterUpperUnc"><br><br>
-        <label>Feature 10:</label> <input type="text" name="ImpactParameterLowerUnc"><br><br>
-        <label>Feature 11:</label> <input type="text" name="TransitDuration_hrs"><br><br>
-        <label>Feature 12:</label> <input type="text" name="TransitDurationUpperUnc_hrs"><br><br>
-        <label>Feature 13:</label> <input type="text" name="TransitDurationLowerUnc_hrs"><br><br>
-        <label>Feature 14:</label> <input type="text" name="TransitDepth_ppm"><br><br>
-        <label>Feature 15:</label> <input type="text" name="TransitDepthUpperUnc_ppm"><br><br>
-        <label>Feature 16:</label> <input type="text" name="TransitDepthLowerUnc_ppm"><br><br>
-        <label>Feature 17:</label> <input type="text" name="PlanetaryRadius_Earthradii"><br><br>
-        <label>Feature 18:</label> <input type="text" name="PlanetaryRadiusUpperUnc_Earthradii"><br><br>
-        <label>Feature 19:</label> <input type="text" name="PlanetaryRadiusLowerUnc_Earthradii"><br><br>
-        <label>Feature 20:</label> <input type="text" name="EquilibriumTemperatureK"><br><br>
-        <label>Feature 21:</label> <input type="text" name="InsolationFlux_Earthflux"><br><br>
-        <label>Feature 22:</label> <input type="text" name="InsolationFluxUpperUnc_Earthflux"><br><br>
-        <label>Feature 23:</label> <input type="text" name="InsolationFluxLowerUnc_Earthflux"><br><br>
-        <label>Feature 24:</label> <input type="text" name="TransitSignal-to-Nois"><br><br>
-        <label>Feature 25:</label> <input type="text" name="TCEPlanetNumbe"><br><br>
-        <label>Feature 26:</label> <input type="text" name="StellarEffectiveTemperatureK"><br><br>
-        <label>Feature 27:</label> <input type="text" name="StellarEffectiveTemperatureUpperUncK"><br><br>
-        <label>Feature 28:</label> <input type="text" name="StellarEffectiveTemperatureLowerUncK"><br><br>
-        <label>Feature 29:</label> <input type="text" name="StellarSurfaceGravity_log10(cm/s**2)"><br><br>
-        <label>Feature 30:</label> <input type="text" name="StellarSurfaceGravityUpperUnc_log10(cm/s**2)"><br><br>
-        <label>Feature 31:</label> <input type="text" name="StellarSurfaceGravityLowerUnc_log10(cm/s**2)"><br><br>
-        <label>Feature 32:</label> <input type="text" name="StellarRadius_Solarradii"><br><br>
-        <label>Feature 33:</label> <input type="text" name="StellarRadiusUpperUnc_Solarradii"><br><br>
-        <label>Feature 34:</label> <input type="text" name="StellarRadiusLowerUnc_Solarradii"><br><br>
-        <label>Feature 35:</label> <input type="text" name="RA_decimaldegrees"><br><br>
-        <label>Feature 36:</label> <input type="text" name="Dec_decimaldegrees"><br><br>
-        <label>Feature 37:</label> <input type="text" name="Kepler-band_mag"><br><br>
+<body>
+  <div class="container">
+    <h1>Kepler Exoplanet Predictor</h1>
+    <form id="predictForm" action="/predict" method="post">
+      <div class="input-group">
+        <label for="DispositionScore">Disposition Score</label>
+        <input type="number" name="DispositionScore" step="any" required>
+        </div>
 
-        <!-- Add more input fields as needed -->
-        <input type="submit" value="Predict">
+    <div class="input-group">
+        <label for="OrbitalPeriod_days">Orbital Period (days)</label>
+        <input type="number" name="OrbitalPeriod_days" step="any" required>
+    </div>
+
+    <div class="input-group">
+        <label for="OrbitalPeriodUpperUnc_days">Orbital Period Upper Uncertainty (days)</label>
+        <input type="number" name="OrbitalPeriodUpperUnc_days" step="any" required>
+    </div>
+
+        <div class="input-group">
+        <label for="OrbitalPeriodLowerUnc_days">Orbital Period Lower Uncertainty (days)</label>
+        <input type="number" name="OrbitalPeriodLowerUnc_days" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitEpoch_BKJD">Transit Epoch (BKJD)</label>
+        <input type="number" name="TransitEpoch_BKJD" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitEpochUpperUnc_BKJD">Transit Epoch Upper Uncertainty (BKJD)</label>
+        <input type="number" name="TransitEpochUpperUnc_BKJD" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitEpochLowerUnc_BKJD">Transit Epoch Lower Uncertainty (BKJD)</label>
+        <input type="number" name="TransitEpochLowerUnc_BKJD" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="ImpactParamete">Impact Parameter</label>
+        <input type="number" name="ImpactParamete" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="ImpactParameterUpperUnc">Impact Parameter Upper Uncertainty</label>
+        <input type="number" name="ImpactParameterUpperUnc" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="ImpactParameterLowerUnc">Impact Parameter Lower Uncertainty</label>
+        <input type="number" name="ImpactParameterLowerUnc" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDuration_hrs">Transit Duration (hrs)</label>
+        <input type="number" name="TransitDuration_hrs" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDurationUpperUnc_hrs">Transit Duration Upper Uncertainty (hrs)</label>
+        <input type="number" name="TransitDurationUpperUnc_hrs" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDurationLowerUnc_hrs">Transit Duration Lower Uncertainty (hrs)</label>
+        <input type="number" name="TransitDurationLowerUnc_hrs" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDepth_ppm">Transit Depth (ppm)</label>
+        <input type="number" name="TransitDepth_ppm" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDepthUpperUnc_ppm">Transit Depth Upper Uncertainty (ppm)</label>
+        <input type="number" name="TransitDepthUpperUnc_ppm" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitDepthLowerUnc_ppm">Transit Depth Lower Uncertainty (ppm)</label>
+        <input type="number" name="TransitDepthLowerUnc_ppm" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="PlanetaryRadius_Earthradii">Planetary Radius (Earth radii)</label>
+        <input type="number" name="PlanetaryRadius_Earthradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="PlanetaryRadiusUpperUnc_Earthradii">Planetary Radius Upper Uncertainty (Earth radii)</label>
+        <input type="number" name="PlanetaryRadiusUpperUnc_Earthradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="PlanetaryRadiusLowerUnc_Earthradii">Planetary Radius Lower Uncertainty (Earth radii)</label>
+        <input type="number" name="PlanetaryRadiusLowerUnc_Earthradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="EquilibriumTemperatureK">Equilibrium Temperature (K)</label>
+        <input type="number" name="EquilibriumTemperatureK" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="InsolationFlux_Earthflux">Insolation Flux (Earth flux)</label>
+        <input type="number" name="InsolationFlux_Earthflux" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="InsolationFluxUpperUnc_Earthflux">Insolation Flux Upper Uncertainty (Earth flux)</label>
+        <input type="number" name="InsolationFluxUpperUnc_Earthflux" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="InsolationFluxLowerUnc_Earthflux">Insolation Flux Lower Uncertainty (Earth flux)</label>
+        <input type="number" name="InsolationFluxLowerUnc_Earthflux" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TransitSignal-to-Nois">Transit Signal-to-Noise</label>
+        <input type="number" name="TransitSignal-to-Nois" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="TCEPlanetNumbe">TCE Planet Number</label>
+        <input type="number" name="TCEPlanetNumbe" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarEffectiveTemperatureK">Stellar Effective Temperature (K)</label>
+        <input type="number" name="StellarEffectiveTemperatureK" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarEffectiveTemperatureUpperUncK">Stellar Effective Temp Upper Uncertainty (K)</label>
+        <input type="number" name="StellarEffectiveTemperatureUpperUncK" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarEffectiveTemperatureLowerUncK">Stellar Effective Temp Lower Uncertainty (K)</label>
+        <input type="number" name="StellarEffectiveTemperatureLowerUncK" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarSurfaceGravity_log10(cm/s**2)">Stellar Surface Gravity log10(cm/s²)</label>
+        <input type="number" name="StellarSurfaceGravity_log10(cm/s**2)" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarSurfaceGravityUpperUnc_log10(cm/s**2)">Stellar Gravity Upper Uncertainty log10(cm/s²)</label>
+        <input type="number" name="StellarSurfaceGravityUpperUnc_log10(cm/s**2)" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarSurfaceGravityLowerUnc_log10(cm/s**2)">Stellar Gravity Lower Uncertainty log10(cm/s²)</label>
+        <input type="number" name="StellarSurfaceGravityLowerUnc_log10(cm/s**2)" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarRadius_Solarradii">Stellar Radius (Solar radii)</label>
+        <input type="number" name="StellarRadius_Solarradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarRadiusUpperUnc_Solarradii">Stellar Radius Upper Uncertainty (Solar radii)</label>
+        <input type="number" name="StellarRadiusUpperUnc_Solarradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="StellarRadiusLowerUnc_Solarradii">Stellar Radius Lower Uncertainty (Solar radii)</label>
+        <input type="number" name="StellarRadiusLowerUnc_Solarradii" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="RA_decimaldegrees">Right Ascension (°)</label>
+        <input type="number" name="RA_decimaldegrees" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="Dec_decimaldegrees">Declination (°)</label>
+        <input type="number" name="Dec_decimaldegrees" step="any" required>
+        </div>
+
+        <div class="input-group">
+        <label for="Kepler-band_mag">Kepler-band Magnitude</label>
+        <input type="number" name="Kepler-band_mag" step="any" required>
+        </div>
+
+
+      <div class="buttons">
+        <button type="button" onclick="fillDemo()">Use Demo</button>
+        <button type="submit">Predict</button>
+      </div>
     </form>
+  </div>
 
-    {% if prediction_text %}
-        <h2>🔍 Result: {{ prediction_text }}</h2>
-    {% endif %}
+  <script>
+    function fillDemo() {
+      const form = document.getElementById('predictForm');
+      const values = [
+        0,
+        19.89913995,
+        1.49e-5,
+        -1.49e-5,
+        175.850252,
+        0.000581,
+        -0.000581,
+        0.969,
+        5.126,
+        -0.077,
+        1.7822,
+        0.0341,
+        -0.0341,
+        10800,
+        171,
+        -171,
+        14.6,
+        3.92,
+        -1.31,
+        638,
+        39.3,
+        31.04,
+        -10.49,
+        76.3,
+        1,
+        5853,
+        158,
+        -176,
+        4.544,
+        0.044,
+        -0.176,
+        0.868,
+        0.233,
+        -0.078,
+        297.00482,
+        48.134129,
+        15.436
+        ];
+
+      [...form.elements].forEach((input, idx) => {
+        if (input.type === 'number') {
+          input.value = values[idx % values.length] || 0;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
