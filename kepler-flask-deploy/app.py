@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Load model and scaler
 model = load_model("kepler-flask-deploy/model/exoplanet_model.keras")
-scaler = joblib.load("model/scaler.pkl")
+scaler = joblib.load("kepler-flask-deploy/model/scaler.pkl")
 # Home route
 @app.route("/")
 def index():
