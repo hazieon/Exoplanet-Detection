@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kepler Exoplanet Detection</title>
+</head>
+<body style="font-family: Arial; padding: 40px;">
+    <h1>🪐 Kepler Exoplanet Predictor</h1>
+    <form method="POST" action="/predict">
+        <!-- Replace these with actual feature names from your dataset -->
+        <label>Feature 1:</label> <input type="text" name="DispositionScore"><br><br>
+        <label>Feature 2:</label> <input type="text" name="OrbitalPeriod_days"><br><br>
+        <label>Feature 3:</label> <input type="text" name="OrbitalPeriodUpperUnc_days"><br><br>
+        <label>Feature 4:</label> <input type="text" name="OrbitalPeriodLowerUnc_days"><br><br>
+        <label>Feature 5:</label> <input type="text" name="TransitEpoch_BKJD"><br><br>
+        <label>Feature 6:</label> <input type="text" name="TransitEpochUpperUnc_BKJD"><br><br>
+        <label>Feature 7:</label> <input type="text" name="TransitEpochLowerUnc_BKJD"><br><br>
+        <label>Feature 8:</label> <input type="text" name="ImpactParamete"><br><br>
+        <label>Feature 9:</label> <input type="text" name="ImpactParameterUpperUnc"><br><br>
+        <label>Feature 10:</label> <input type="text" name="ImpactParameterLowerUnc"><br><br>
+        <label>Feature 11:</label> <input type="text" name="TransitDuration_hrs"><br><br>
+        <label>Feature 12:</label> <input type="text" name="TransitDurationUpperUnc_hrs"><br><br>
+        <label>Feature 13:</label> <input type="text" name="TransitDurationLowerUnc_hrs"><br><br>
+        <label>Feature 14:</label> <input type="text" name="TransitDepth_ppm"><br><br>
+        <label>Feature 15:</label> <input type="text" name="TransitDepthUpperUnc_ppm"><br><br>
+        <label>Feature 16:</label> <input type="text" name="TransitDepthLowerUnc_ppm"><br><br>
+        <label>Feature 17:</label> <input type="text" name="PlanetaryRadius_Earthradii"><br><br>
+        <label>Feature 18:</label> <input type="text" name="PlanetaryRadiusUpperUnc_Earthradii"><br><br>
+        <label>Feature 19:</label> <input type="text" name="PlanetaryRadiusLowerUnc_Earthradii"><br><br>
+        <label>Feature 20:</label> <input type="text" name="EquilibriumTemperatureK"><br><br>
+        <label>Feature 21:</label> <input type="text" name="InsolationFlux_Earthflux"><br><br>
+        <label>Feature 22:</label> <input type="text" name="InsolationFluxUpperUnc_Earthflux"><br><br>
+        <label>Feature 23:</label> <input type="text" name="InsolationFluxLowerUnc_Earthflux"><br><br>
+        <label>Feature 24:</label> <input type="text" name="TransitSignal-to-Nois"><br><br>
+        <label>Feature 25:</label> <input type="text" name="TCEPlanetNumbe"><br><br>
+        <label>Feature 26:</label> <input type="text" name="StellarEffectiveTemperatureK"><br><br>
+        <label>Feature 27:</label> <input type="text" name="StellarEffectiveTemperatureUpperUncK"><br><br>
+        <label>Feature 28:</label> <input type="text" name="StellarEffectiveTemperatureLowerUncK"><br><br>
+        <label>Feature 29:</label> <input type="text" name="StellarSurfaceGravity_log10(cm/s**2)"><br><br>
+        <label>Feature 30:</label> <input type="text" name="StellarSurfaceGravityUpperUnc_log10(cm/s**2)"><br><br>
+        <label>Feature 31:</label> <input type="text" name="StellarSurfaceGravityLowerUnc_log10(cm/s**2)"><br><br>
+        <label>Feature 32:</label> <input type="text" name="StellarRadius_Solarradii"><br><br>
+        <label>Feature 33:</label> <input type="text" name="StellarRadiusUpperUnc_Solarradii"><br><br>
+        <label>Feature 34:</label> <input type="text" name="StellarRadiusLowerUnc_Solarradii"><br><br>
+        <label>Feature 35:</label> <input type="text" name="RA_decimaldegrees"><br><br>
+        <label>Feature 36:</label> <input type="text" name="Dec_decimaldegrees"><br><br>
+        <label>Feature 37:</label> <input type="text" name="Kepler-band_mag"><br><br>
+
+        <!-- Add more input fields as needed -->
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h2>🔍 Result: {{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
