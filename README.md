@@ -42,13 +42,13 @@ The neural network receives 46 numerical features describing stars, planets, and
 
 
 ## DATA PROCESSING - 
-Non-numerical or string features (like pl_name, hostname, disposition) are removed during preprocessing, leaving only numeric data suitable for the neural network.
-Non-numeric columns removed: pl_name, hostname, disposition, etc., leaving only numeric features.
-NaN values handled: replaced with 0 after standardization.
-Standardization: features scaled with StandardScaler to zero mean and unit variance.
-Train/test split: stratified to preserve class balance.
-Class imbalance addressed: applied class weights during model training instead of undersampling or oversampling.
-Final input data: normalized numeric matrix (X_train_normalized, X_test_normalized) and binary labels (y_train, y_test).
+**Non-numerical or string features** (like pl_name, hostname, disposition) are removed during preprocessing, leaving only numeric data suitable for the neural network.    
+**Non-numeric columns removed:** pl_name, hostname, disposition, etc., leaving only numeric features.     
+**NaN values handled:** replaced with 0 after standardization.    
+**Standardization:** features scaled with StandardScaler to zero mean and unit variance.     
+**Train/test split:** stratified to preserve class balance.   
+**Class imbalance addressed:** applied class weights during model training instead of undersampling or oversampling.    
+**Final input data:** normalized numeric matrix (X_train_normalized, X_test_normalized) and binary labels (y_train, y_test).    
 
 
 ## 📦 Setup Instructions
