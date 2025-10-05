@@ -1,6 +1,8 @@
 WATCH OUR DEMO VIDEO AND SEE ALL FILES HERE:
 https://drive.google.com/drive/folders/1ZWVwwQ1cvAenlEz5nz-HpOjhW-EdmZkR
 
+https://youtu.be/fE7KUcSIqFA
+
 # 🌌 K2 Exoplanet Detection
 
 > 🚀 Predict whether a candidate is a confirmed exoplanet using machine learning and K2 NASA mission data.
