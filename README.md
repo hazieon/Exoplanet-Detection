@@ -30,24 +30,15 @@ It combines astrophysical parameters, uncertainty margins using a machine learni
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML, CSS (custom styling, Montserrat font)
-- **Backend**: Python, Flask
-- **Machine Learning**: scikit-learn, pandas, joblib
-- **Deployment**: Render
-
----
-
 ## 📊 Input Parameters
 
 The neural network receives 46 numerical features describing stars, planets, and their orbital systems, including:
 
-Stellar properties: mass, radius, effective temperature, metallicity, surface gravity
-Planet properties: radius, mass, semi-major axis, orbital eccentricity, equilibrium temperature
-System parameters: number of planets, distance, apparent magnitudes (V and K bands)
-Measurement uncertainties: upper/lower error bounds on stellar and planetary values
-Flags and limits: indicators for radius/mass limits, controversial detections
+**Stellar properties:** mass, radius, effective temperature, metallicity, surface gravity   
+**Planet properties:** radius, mass, semi-major axis, orbital eccentricity, equilibrium temperature    
+**System parameters:** number of planets, distance, apparent magnitudes (V and K bands)     
+**Measurement uncertainties:** upper/lower error bounds on stellar and planetary values    
+**Flags and limits:** indicators for radius/mass limits, controversial detections     
 
 
 ## DATA PROCESSING - 
