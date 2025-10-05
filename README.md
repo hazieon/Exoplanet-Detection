@@ -17,7 +17,7 @@ This project uses data from NASA's Kepler mission to predict whether a planetary
 
 ## 📽️ Preview
 
-![App Preview](./Screenshot%202025-06-03%20233238.png)
+![App Preview](./SCREENSHOT_early.png)
 
 ---
 
