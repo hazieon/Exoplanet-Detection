@@ -1,26 +1,21 @@
-
-
-
-
-
-
-
-
-ORIGINAL INCREDIBLE PUBLIC OPEN SOURCE PROJECT - 
-
 # 🌌 Kepler Exoplanet Detection
 
-**Live Demo →** [kepler-exoplanet-detection.onrender.com](https://kepler-exoplanet-detection.onrender.com)
-
-> 🚀 Predict whether a candidate is a confirmed exoplanet using machine learning and Kepler mission data.
+> 🚀 Predict whether a candidate is a confirmed exoplanet using machine learning and K2 NASA mission data.
 
 ---
 
 ## 🧠 What’s This Project About?
 
-This project uses data from NASA's Kepler mission to predict whether a planetary candidate is likely to be a real exoplanet. It combines astrophysical parameters, uncertainty margins, and a user-friendly UI to perform real-time predictions using a machine learning model trained on labeled exoplanet data.
+This project uses data from NASA's K2 mission to classify planetary candidates and predict whether they are likely to be a real exoplanet. 
+It combines astrophysical parameters, uncertainty margins using a machine learning model trained on REAL NASA labeled exoplanet data.
 
-> 🎯 **Model Accuracy:** Achieved **95.6%** accuracy on the validation dataset using a Random Forest Classifier and Neural Networks.
+> 🎯 **Model Performance metrics:**
+> Achieved **98.6%** accuracy on the validation dataset using a Random Forest Classifier
+> Achieved 98.5% with a Neural Network model
+
+> Visualised through figures of Accuracy, Loss, Confusion Matrix, ROC Curve
+> Class weights prevent the model from overtraining on majority or ignoring the minority class
+> Validation curves confirm learning without severe overfitting
 
 ---
 
@@ -42,23 +37,24 @@ This project uses data from NASA's Kepler mission to predict whether a planetary
 
 ## 📊 Input Parameters
 
-Users input ~37 different astrophysical parameters, including:
-- Orbital period, transit depth, and duration
-- Stellar radius, surface gravity, and temperature
-- Planetary radius and equilibrium temperature
-- Signal-to-noise ratios and uncertainties
+The neural network receives 46 numerical features describing stars, planets, and their orbital systems, including:
 
-👉 Want to test quickly? Click the **"Use Demo"** button to auto-fill real Kepler data!
+Stellar properties: mass, radius, effective temperature, metallicity, surface gravity
+Planet properties: radius, mass, semi-major axis, orbital eccentricity, equilibrium temperature
+System parameters: number of planets, distance, apparent magnitudes (V and K bands)
+Measurement uncertainties: upper/lower error bounds on stellar and planetary values
+Flags and limits: indicators for radius/mass limits, controversial detections
 
----
 
-## 🔍 How It Works
+## DATA PROCESSING - 
+Non-numerical or string features (like pl_name, hostname, disposition) are removed during preprocessing, leaving only numeric data suitable for the neural network.
+Non-numeric columns removed: pl_name, hostname, disposition, etc., leaving only numeric features.
+NaN values handled: replaced with 0 after standardization.
+Standardization: features scaled with StandardScaler to zero mean and unit variance.
+Train/test split: stratified to preserve class balance.
+Class imbalance addressed: applied class weights during model training instead of undersampling or oversampling.
+Final input data: normalized numeric matrix (X_train_normalized, X_test_normalized) and binary labels (y_train, y_test).
 
-1. A form captures the input features related to a planetary candidate.
-2. Flask sends the data to the backend where the trained ML model processes it.
-3. The prediction is returned instantly: **Confirmed Exoplanet** or **Not Confirmed**.
-
----
 
 ## 📦 Setup Instructions
 
