@@ -1,21 +1,25 @@
-# 🌌 Kepler Exoplanet Detection
+# 🌌 K2 Exoplanet Detection
 
 > 🚀 Predict whether a candidate is a confirmed exoplanet using machine learning and K2 NASA mission data.
+
+# EXPLORE FOR YOURSELF:
+Take a deep dive into our A.I model and try out the model on new data to classify NEW Exoplanets
+[Playground](https://colab.research.google.com/drive/1KqPKqPoVj_znV-4Hble0yDQ4oLJCee63?usp=sharing)
 
 ---
 
 ## 🧠 What’s This Project About?
 
-This project uses data from NASA's K2 mission to classify planetary candidates and predict whether they are likely to be a real exoplanet. 
+This project uses data from NASA's **K2** mission to classify planetary candidates and predict whether they are likely to be a real exoplanet. 
 It combines astrophysical parameters, uncertainty margins using a machine learning model trained on REAL NASA labeled exoplanet data.
 
 > 🎯 **Model Performance metrics:**
-> Achieved **98.6%** accuracy on the validation dataset using a Random Forest Classifier
-> Achieved 98.5% with a Neural Network model
+> Achieved **96%** accuracy on the validation dataset using a Random Forest Classifier
+> Achieved **92.5%** with a Neural Network model
 
-> Visualised through figures of Accuracy, Loss, Confusion Matrix, ROC Curve
+> Visualised through figures of Accuracy, Loss, Confusion Matrix
 > Class weights prevent the model from overtraining on majority or ignoring the minority class
-> Validation curves confirm learning without severe overfitting
+> Predict the planetary status of unseen planets from the [Playground](https://colab.research.google.com/drive/1KqPKqPoVj_znV-4Hble0yDQ4oLJCee63?usp=sharing) or via the **front end Exoplanet UI**
 
 ---
 
@@ -57,9 +61,5 @@ Final input data: normalized numeric matrix (X_train_normalized, X_test_normaliz
 
 
 ## 📦 Setup Instructions
-
-```bash
-git clone https://github.com/yourusername/kepler-exoplanet-detection.git
-cd kepler-exoplanet-detection
-pip install -r requirements.txt
-python app.py
+[Playground](https://colab.research.google.com/drive/1KqPKqPoVj_znV-4Hble0yDQ4oLJCee63?usp=sharing)
+**Front End UI link**
